@@ -2,6 +2,7 @@ const mysql = require('mysql2');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cred = require('./credentials');
+const cors = require('cors');
 const app = express();
 const port = 3001;
 var con = mysql.createConnection({
@@ -14,7 +15,7 @@ var con = mysql.createConnection({
    
 con.connect();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()).use(cors());
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
