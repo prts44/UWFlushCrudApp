@@ -1,4 +1,5 @@
 import TableRow from './components/TableRow.js';
+import BathroomEditor from './components/BathroomEditor.js';
 import style from './style/App.module.css';
 import { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
@@ -20,8 +21,8 @@ function App() {
             <div className={style.container}>
                 <div className={style.content}>
                     <h1>Modify Bathrooms Database</h1>
-                    <Popup trigger={<button>Add</button>} position="right center">
-                        <div>Popup content here !!</div>
+                    <Popup trigger={<button>Add</button>} position="right center" modal>
+                        <BathroomEditor />
                     </Popup>
                     <table>
                         <tr>
