@@ -35,7 +35,8 @@ app.get("/locations", (req, res) => {
 
 app.post("/locations/add", (req, res) => {
     console.log(req.body);
-    con.promise().query(`INSERT INTO locations (name, building, admin_rating, gender) VALUES (${req.body.name}, ${req.body.building}, ${req.body.admin_rating}, ${req.body.gender})`);
+    con.promise().query(`INSERT INTO locations (name, building, admin_rating, gender) 
+        VALUES (${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.building)}, ${req.body.admin_rating}, ${JSON.stringify(req.body.gender)})`);
     res.status(201).json("done");
 });
 

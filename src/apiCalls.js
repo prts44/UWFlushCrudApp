@@ -1,7 +1,7 @@
 // set of api call functions
 const addBathroom = async (name, building, admin_rating, gender) => {
     // params use snake case to be consistent with SQL
-    await fetch('https://jsonplaceholder.typicode.com/posts', {
+    await fetch('http://localhost:3001/locations/add', {
         method: 'POST',
         body: JSON.stringify({
             name: name,
@@ -12,7 +12,7 @@ const addBathroom = async (name, building, admin_rating, gender) => {
         headers: {
          'Content-type': 'application/json; charset=UTF-8',
         },
-   })
+   });
 }
 
 export { addBathroom };

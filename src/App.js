@@ -3,7 +3,6 @@ import BathroomEditor from './components/BathroomEditor.js';
 import style from './style/App.module.css';
 import { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
-import { addBathroom } from './apiCalls.js';
 
 function App() {
 

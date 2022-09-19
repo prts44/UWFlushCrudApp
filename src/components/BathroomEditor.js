@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import style from '../style/BathroomEditor.module.css';
+import { addBathroom } from '../apiCalls.js';
 
 function BathroomEditor(props) {
 
@@ -19,7 +20,8 @@ function BathroomEditor(props) {
             <h4>Gender</h4>
             <input type="text" defaultValue={props.gender} onChange={(e) => {setGender(e.target.value)}}/>
             <button onClick={() => {
-                console.log("submit");
+                console.log({name: name, building: building, adminRating: adminRating, gender: gender});
+                addBathroom(name, building, adminRating, gender);
             }}>Submit</button>
         </div>
     )
