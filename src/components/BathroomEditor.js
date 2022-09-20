@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import style from '../style/BathroomEditor.module.css';
-import { addBathroom } from '../apiCalls.js';
+import { addBathroom, editBathroom } from '../apiCalls.js';
 
 function BathroomEditor(props) {
 
@@ -21,7 +21,13 @@ function BathroomEditor(props) {
             <input type="text" defaultValue={props.gender} onChange={(e) => {setGender(e.target.value)}}/>
             <button onClick={() => {
                 console.log({name: name, building: building, adminRating: adminRating, gender: gender});
-                addBathroom(name, building, adminRating, gender);
+                if (props.call == "add") {
+                    addBathroom(name, building, adminRating, gender);
+                    window.location.reload(false);
+                } else if (props.call == "edit") {
+                    editBathroom(name, building, adminRating, gender, props.id);
+                    window.location.reload(false);
+                }
             }}>Submit</button>
         </div>
     )
@@ -31,7 +37,8 @@ BathroomEditor.defaultProps = {
     name: "",
     building: "",
     adminRating: 1,
-    gender: "M" // i'm a guy so i will likely only be adding male bathrooms to this list
+    gender: "M", // i'm a guy so i will likely only be adding male bathrooms to this list
+    call: "add"
 }
 
 export default BathroomEditor;

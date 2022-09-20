@@ -42,7 +42,13 @@ app.post("/locations/add", (req, res) => {
 
 app.delete("/locations/delete/:id", (req, res) => {
     console.log(req.params.id);
-    con.promise().query(`DELETE FROM locations WHERE id=${req.params.id}`);
+    con.promise().query(`DELETE FROM locations WHERE id=${req.body.id}`);
+    res.status(201).json("done");
+});
+
+app.put("/locations/update/:id", (req, res) => {
+    console.log(req.params.id);
+    con.promise().query(`UPDATE locations SET name=${JSON.stringify(req.body.name)}, building=${JSON.stringify(req.body.building)}, admin_rating=${req.body.admin_rating}, gender=${JSON.stringify(req.body.gender)} WHERE id=${req.params.id}`);
     res.status(201).json("done");
 });
 

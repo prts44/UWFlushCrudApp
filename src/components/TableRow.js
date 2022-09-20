@@ -1,3 +1,7 @@
+import BathroomEditor from './BathroomEditor.js';
+import Popup from 'reactjs-popup';
+import { deleteBathroom } from '../apiCalls.js';
+
 function TableRow(props) {
     return (
         <tr>
@@ -7,8 +11,19 @@ function TableRow(props) {
             <td>{props.bathroom.admin_rating}</td>
             <td>{props.bathroom.gender}</td>
             <td>
-                <button>Edit</button>
-                <button>Delete</button>
+                <Popup trigger={<button>Edit</button>} position="right center" modal>
+                    <BathroomEditor 
+                        name={props.bathroom.name} 
+                        building={props.bathroom.building} 
+                        adminRating={props.bathroom.admin_rating}
+                        gender={props.bathroom.gender}
+                        call="edit"
+                        id={props.bathroom.id}/>
+                </Popup>
+                <button onClick={() => {
+                    deleteBathroom(props.bathroom.id);
+                    window.location.reload(false);
+                }}>Delete</button>
             </td>
         </tr>
     )
